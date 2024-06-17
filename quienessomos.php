@@ -252,19 +252,6 @@ if (isset($_SESSION['nombre_usuario'])) {
             padding-right: 30px;
         }
 
-        .video-main {
-            text-align: right;
-            width: 333px;
-            height: 500px;
-        }
-
-        .texto-main-right {
-            text-align: left;
-            width: 333px;
-            padding-top: 250px;
-            padding-left: 30px;
-        }
-
         .copyright {
             justify-content: center;
             text-align: center;
@@ -495,35 +482,38 @@ if (isset($_SESSION['nombre_usuario'])) {
         <h2 class="main-title">DE LA MANO DE ANA ALDA</h2>
         <br>
         <div class="container-main container-fluid">
-            <div class="texto-main-left">
-                <p><em>The Ink ofrece joyas conceptuales y modernistas que trascienden generaciones y tendencias. Cada
-                        colección
-                        busca expresar un lenguaje visual distinto, donde las piezas aspiran a formar parte del cuerpo,
-                        igual de
-                        inalterables que un tatuaje.</em></p>
-                <p><em>El antiguo proceso de fundición de cera perdida se utiliza para formar piezas asimétricas y
-                        unisex,
-                        inspiradas en el estudio de impresiones de fenómenos naturales, cuidadosamente fragmentadas,
-                        moldeadas y
-                        transformadas en metales preciosos.</em></p>
-            </div>
+            <div class="row">
+                <div class="texto-main col-md-6">
+                    <p><em>The Ink ofrece joyas conceptuales y modernistas que trascienden generaciones y tendencias.
+                            Cada
+                            colección
+                            busca expresar un lenguaje visual distinto, donde las piezas aspiran a formar parte del
+                            cuerpo,
+                            igual de
+                            inalterables que un tatuaje.</em></p>
+                    <p><em>El antiguo proceso de fundición de cera perdida se utiliza para formar piezas asimétricas y
+                            unisex,
+                            inspiradas en el estudio de impresiones de fenómenos naturales, cuidadosamente fragmentadas,
+                            moldeadas y
+                            transformadas en metales preciosos.</em></p>
+                            <p><em>Con el fin de minimizar los residuos generados en el proceso de producción, nuestras
+                            colecciones
+                            están compuestas por un número limitado de piezas. Presentando joyas únicas y personales que
+                            forman parte de la identidad de nuestros clientes.</em></p>
+                    <p><em>Gracias a la producción local, apoyamos a la comunidad y reducimos el uso innecesario de
+                            recursos. Elaboramos nuestras joyas con plata reciclada, reutilizamos la cera empleada en
+                            los
+                            diseños y los materiales semipreciosos son adquiridos y trabajados de forma
+                            responsable.</em>
+                </div>
 
-            <div class="video-main">
-                <video autoplay loop muted>
-                    <source src="videos/videoindex.mp4" type="video/mp4">
-                </video>
-            </div>
+                <div class="video-main col-md-6">
+                    <video autoplay loop muted>
+                        <source src="videos/videoindex.mp4" type="video/mp4">
+                    </video>
+                </div>
 
-            <div class="texto-main-right">
-                <p><em>Con el fin de minimizar los residuos generados en el proceso de producción, nuestras colecciones
-                        están compuestas por un número limitado de piezas. Presentando joyas únicas y personales que
-                        forman parte de la identidad de nuestros clientes.</em></p>
-                <p><em>Gracias a la producción local, apoyamos a la comunidad y reducimos el uso innecesario de
-                        recursos. Elaboramos nuestras joyas con plata reciclada, reutilizamos la cera empleada en los
-                        diseños y los materiales semipreciosos son adquiridos y trabajados de forma responsable.</em>
-                </p>
             </div>
-        </div>
     </main>
 
     <footer class="text-white">

@@ -1,23 +1,27 @@
 <?php
 session_start();
-include 'accesobd.php'; // Incluye el archivo de conexión a la base de datos
+include 'accesobd.php';
+
+$descuento = 0;
+
+// Verificar si el usuario ha iniciado sesión
+if (isset($_SESSION['nombre_usuario'])) {
+    // Aplicar un 10% de descuento
+    $descuento = 0.1;
+}
 
 if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-    $query = $conn->prepare("SELECT * FROM productos WHERE id = ?");
-    $query->bind_param("i", $id);
-    $query->execute();
-    $result = $query->get_result();
-    $producto = $result->fetch_assoc();
+    $id = $_GET['id'];
+    $query = "SELECT * FROM productos WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+    $producto = mysqli_fetch_assoc($result);
 
     if ($producto) {
         $nombre = $producto['nombre'];
         $precio = $producto['precio'];
         $descripcion = $producto['descripcion'];
         $stock = $producto['stock'];
-        $descuento = isset($_SESSION['nombre_usuario']) ? 0.1 : 0;
-        $precioConDescuento = $precio * (1 - $descuento);
-        $img = explode(',', $producto['img']); // Obtener las URLs de las imágenes del producto actual
+        $img = explode(',', $producto['img']);
     } else {
         echo "Producto no encontrado.";
         exit;
@@ -26,7 +30,6 @@ if (isset($_GET['id'])) {
     echo "ID de producto no especificado.";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +37,7 @@ if (isset($_GET['id'])) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($nombre); ?></title>
     <link rel="icon" href="imgs/icono3.png" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -594,14 +598,21 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <div class="col-md-6 justify-content-center descripcion">
-                    <h1><?php echo htmlspecialchars($nombre); ?></h1>
-                    <p><b><?php echo number_format($precioConDescuento, 2); ?>€</b>
-                        <?php if ($descuento > 0) { ?>
-                            <span style="color: red; font-size: 12px;">-10%</span>
-                        <?php } ?>
+                    <h1><?php echo $nombre; ?></h1>
+                    <p><?php echo $descripcion; ?></p>
+                    <p><b>Stock: <?php echo $stock; ?></b></p>
+                    <p>
+                        <?php
+                        $precioConDescuento = $precio * (1 - $descuento);
+                        ?>
+                        Precio:
+                        <?php
+                        echo '<b>' . number_format($precioConDescuento, 2) . '€</b>';
+                        if ($descuento > 0) {
+                            echo ' <span style="color: red; font-size: 12px;">-10%</span>';
+                        }
+                        ?>
                     </p>
-                    <p><?php echo htmlspecialchars($descripcion); ?></p>
-                    <p><b>Stock: <?php echo htmlspecialchars($stock); ?></b></p>
                     <form id="comprar">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <label for="cantidad">Cantidad (máximo 3): </label>

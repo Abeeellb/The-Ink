@@ -38,33 +38,6 @@ if (isset($_SESSION['nombre_usuario'])) {
             src: url('fonts/Abel-Regular.ttf') format('truetype');
         }
 
-        @media (max-width: 768px) {
-            .text-container-2 {
-                padding-top: 100px;
-                /* Ajusta el espacio superior */
-                padding-bottom: 100px;
-                /* Ajusta el espacio inferior */
-            }
-
-            .container-2 img {
-                max-width: 100%;
-                /* La imagen ocupa todo el ancho */
-                height: auto;
-                /* Se mantiene la proporción de aspecto */
-            }
-
-            .button2 {
-                display: block;
-                /* Cambia a bloque para centrarlo */
-                margin: 0 auto;
-                /* Centra horizontalmente */
-                width: 200px;
-                /* Ancho fijo del botón */
-                margin-top: 20px;
-                /* Espacio superior */
-            }
-        }
-
         body {
             font-family: Abel, Arial, sans-serif;
             font-size: 16px;
@@ -171,14 +144,9 @@ if (isset($_SESSION['nombre_usuario'])) {
             margin-right: 50px;
         }
 
-        .container-1 {
-            background-image: url('imgs/banner.png');
-            background-repeat: no-repeat;
-            /*Centramos el fondo al centro*/
-            background-position: center;
-            /*Y le decimos que siempre ocupe el ancho y el alto con esto*/
-            background-size: cover;
-            height: 400px;
+        .first-img {
+            height: 500px;
+            width: 100%;
         }
 
         .container-2 {
@@ -317,6 +285,29 @@ if (isset($_SESSION['nombre_usuario'])) {
 
 
         a.button2:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+        }
+
+        a.button3 {
+            display: inline-block;
+            /* Cambiado a inline-block */
+            width: 100%;
+            border: 1px solid black;
+            text-decoration: none;
+            color: black;
+            padding: 20px 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 20px;
+            /* Añadido para ocultar el overflow */
+            margin-top: 85px;
+        }
+
+
+        a.button3:hover {
             background-color: black;
             color: white;
             border: 1px solid black;
@@ -612,8 +603,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                 </ul>
 
                 <div class="icons">
-                    <a class="nav-link" href="contacto.php"><img src="imgs/envelope.svg"
-                            alt="contacto"></a>
+                    <a class="nav-link" href="contacto.php"><img src="imgs/envelope.svg" alt="contacto"></a>
                     <a class="nav-link" href="iniciarsesion.php"><img src="imgs/inicio_sesion.svg"
                             alt="inicio_sesion"></a>
 
@@ -674,41 +664,43 @@ if (isset($_SESSION['nombre_usuario'])) {
         </div>
     </header>
     <main>
-        <div class="container-1">
-            <a class="button" href="tienda.php">Ver Productos</a>
-        </div>
-        <div class="container-2 text-center">
-            <h1 class="text-container-2">¡Inicia sesión para un 10% de descuento en toda la web!</h1>
-            <a class="button2" href="inciarsesion.php">Iniciar Sesión</a>
-        </div>
-        <div class="container-3">
-            <div class="row">
-                <div class="col-md-4 top justify-content-center">
-                    <a href="anillos.php" class="img-container-3">
-                        <img class="img-fluid" src="imgs/foto_inicio_2.jpg" alt="Imagen 1">
-                    </a>
-                    <a class="categorias" href="anillos.php">
-                        <h2>ANILLOS</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 top justify-content-center">
-                    <a href="pendientes.php" class="img-container-3">
-                        <img class="img-fluid" src="imgs/Sin título-3-er.jpg" alt="Imagen 2">
-                    </a>
-                    <a class="categorias" href="pendientes.php">
-                        <h2>PENDIENTES</h2>
-                    </a>
-                </div>
-                <div class="col-md-4 top justify-content-center">
-                    <a href="brazaletes.php" class="img-container-3">
-                        <img class="img-fluid" src="imgs/Sin título-2-bra.jpg" alt="Imagen 3">
-                    </a>
-                    <a class="categorias" href="brazaletes.php">
-                        <h2>BRAZALETES</h2>
-                    </a>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="imgs/banner.png" class="img-fluid first-img" alt="Imagen Full Width">
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <a href="iniciarsesion.php" class="button3">¡Inicia sesión para un 10% de descuento en toda la web!</a>
+            </div>
+            <div class="container-3">
+                <div class="row">
+                    <div class="col-md-4 top justify-content-center">
+                        <a href="anillos.php" class="img-container-3">
+                            <img class="img-fluid" src="imgs/foto_inicio_2.jpg" alt="Imagen 1">
+                        </a>
+                        <a class="categorias" href="anillos.php">
+                            <h2>ANILLOS</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 top justify-content-center">
+                        <a href="pendientes.php" class="img-container-3">
+                            <img class="img-fluid" src="imgs/Sin título-3-er.jpg" alt="Imagen 2">
+                        </a>
+                        <a class="categorias" href="pendientes.php">
+                            <h2>PENDIENTES</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 top justify-content-center">
+                        <a href="brazaletes.php" class="img-container-3">
+                            <img class="img-fluid" src="imgs/Sin título-2-bra.jpg" alt="Imagen 3">
+                        </a>
+                        <a class="categorias" href="brazaletes.php">
+                            <h2>BRAZALETES</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
     </main>
 
     <div class="aviso-cookies" id="aviso-cookies">
